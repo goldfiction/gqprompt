@@ -1,0 +1,6 @@
+function prompter() {
+  local pwdstr=$(pwd)
+  export PS1="$pwdstr>"
+}
+PROMPT_COMMAND=prompter
+

@@ -1,0 +1,17 @@
+#. /cygdrive/c/all/workbench/prompt4
+
+function prompter(){
+  export PS1="$(pwd)>"
+}
+
+if [ -f "$HOME/.bash-git-prompt/gitprompt.sh" ]; then
+    GIT_PROMPT_ONLY_IN_REPO=1
+    source "$HOME/.bash-git-prompt/gitprompt.sh"
+fi
+
+#function prompter() {
+#  local git_status=$(/cygdrive/c/all/workbench/bash-git-prompt/git-prompt-help.sh) # Assume you have a script for this
+#  export PS1="[\u@\h \w$git_status]\$ "
+#}
+
+export PROMPT_COMMAND=prompter

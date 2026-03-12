@@ -1,0 +1,21 @@
+# Define colors (adjust codes based on your terminal's color mapping)
+GREEN='\\[\\e[0;32m\\]'
+RED='\\[\\e[0;31m\\]'
+# Normal Color / Reset
+NC='\\[\\e[0m\\]'
+
+# Function to return a colored symbol based on the last command's exit status
+function set_prompt_color() {
+  if [ "$?" -eq "0" ]; then
+    SC="${GREEN}✓"  # Green checkmark for success
+  else
+    SC="${RED}✗"   # Red X for failure
+  fi
+}
+
+# Set the PROMPT_COMMAND to run the function before displaying the prompt
+export PROMPT_COMMAND=set_prompt_color
+
+# Define the PS1 prompt string
+# Format: [user@host pwd] status_symbol>
+export PS1="[\\u@\\h \\W] \${SC}${NC}> "
